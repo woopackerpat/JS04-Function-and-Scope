@@ -1,6 +1,16 @@
-const countDay = (day, month, year) => {
-  ageDay = 31 - day;
-  ageMonth = (12 - month) * 30;
-  ageYear = (2020 - year) * 12 * 30;
-  return ageDay + ageMonth + ageYear;
+const isLeap = (year) => {
+  if (year % 4 === 0 && year % 100 === 0 && year % 400 === 0) return true;
+  if (year % 4 === 0) return true;
+  return false;
+};
+
+const countDayAge = (year) => {
+  let sumAge = 0;
+
+  for (let countYear = year; countYear < 2020; countYear++) {
+    if (isLeap(countYear)) sumAge += 366;
+    else sumAge += 365;
+  }
+
+  return sumAge;
 };
